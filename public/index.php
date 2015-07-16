@@ -6,6 +6,9 @@
  * Time: 00:00
  */
 
+// Let it blow ...
+error_reporting(E_ALL);
+
 // Configure directory constants ...
 define('BASE_DIR',      __DIR__  . '/..');
 define('APP_DIR',       BASE_DIR . '/app');

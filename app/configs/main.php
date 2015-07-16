@@ -35,8 +35,8 @@ interface Environment {
  * @throws Exception When the option is not found in the environment
  */
 function getEnvironmentVar($envVar) {
-	if(!getenv($envVar)) {
-		throw new Exception("Oops! Config: It looks like your variable '$envVar' is not yet added to the environment variables.");
+	if(($v = getenv($envVar)) !== false) {
+		return $v;
 	}
-	return getenv($envVar);
+	throw new Exception("Oops! Config: It looks like your variable '$envVar' is not yet added to the environment variables.");
 }
