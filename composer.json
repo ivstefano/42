@@ -1,0 +1,23 @@
+{
+  "name": "42",
+  "description": "Exploration into the vast depths of Life.",
+  "keywords": ["42", "Life"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ivo Stefanov",
+      "email": "ivo.stefanov90@gmail.com",
+      "role": "The Architect"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0",
+    "filp/whoops": ">=1.1.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Universe\\": "app/Universe/",
+      "\\": "app/"
+    }
+  }
+}

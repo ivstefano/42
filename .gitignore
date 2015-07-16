@@ -1,6 +1,13 @@
 # Configs #
 ###########
 
+
 # Generated Files #
 ###################
+
+#PhpStorm
 .idea
+
+# Git
+/vendor
+composer.lock
