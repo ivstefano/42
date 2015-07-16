@@ -11,11 +11,13 @@
     }
   ],
   "require": {
-    "php": ">=5.6.0"
+    "php": ">=5.6.0",
+    "filp/whoops": ">=1.1.2"
   },
   "autoload": {
     "psr-4": {
-      "Universe\\": "app/Universe/"
+      "Universe\\": "app/Universe/",
+      "\\": "app/"
     }
   }
 }
