@@ -9,17 +9,27 @@
 // Let it explode ...
 error_reporting(E_ALL);
 
+// Configure shortcuts ...
+define('SLASH',        DIRECTORY_SEPARATOR);
+
 // Configure file constants ...
-define('MAIN_FILE',        'main.php');
-define('AUTOLOARDER_FILE', 'autoloader.php');
+define('MAIN_FILE',     'main.php');
+define('AUTOLOAD_FILE', 'autoload.php');
 
 // Configure directory constants ...
-define('BASE_DIR',      __DIR__  . DIRECTORY_SEPARATOR . '..');
-define('APP_DIR',       BASE_DIR . DIRECTORY_SEPARATOR . 'app');
-define('VENDOR_DIR',    BASE_DIR . DIRECTORY_SEPARATOR . 'vendor');
-define('ROUTES_DIR',    APP_DIR  . DIRECTORY_SEPARATOR . 'routes');
-define('CONFIG_DIR',    APP_DIR  . DIRECTORY_SEPARATOR . 'configs');
-define('BOOTSTRAP_DIR', APP_DIR  . DIRECTORY_SEPARATOR . 'bootstrap');
+define('BASE_DIR',      __DIR__   . SLASH . '..');
+define('APP_DIR',       BASE_DIR  . SLASH . 'app');
+define('SETUP_DIR',     BASE_DIR  . SLASH . 'setup');
+define('VENDOR_DIR',    BASE_DIR  . SLASH . 'vendor');
+define('ROUTES_DIR',    SETUP_DIR . SLASH . 'routes');
+define('CONFIG_DIR',    SETUP_DIR . SLASH . 'configs');
+define('BOOTSTRAP_DIR', SETUP_DIR . SLASH . 'bootstrap');
+
+// In AutoLoader Veritas
+require VENDOR_DIR . SLASH . AUTOLOAD_FILE;
+
+// It is always good to have some configurations added
+require CONFIG_DIR . SLASH . MAIN_FILE;
 
 // Configure existing environments ...
 // TODO: make the environments more configurable (for example discoverable in the CONFIG_DIR)
@@ -28,9 +38,5 @@ $environmentConfigurationFiles = [
 	Environment::PRODUCTION => 'prod.php'
 ];
 
-
-// In AutoLoader Veritas
-require VENDOR_DIR . DIRECTORY_SEPARATOR . AUTOLOARDER_FILE;
-
-// Lets start the ride of your life
-require BOOTSTRAP_DIR . DIRECTORY_SEPARATOR . MAIN_FILE;
+// Bootstrap the application
+require BOOTSTRAP_DIR . SLASH . MAIN_FILE;

@@ -5,8 +5,6 @@
  * Date: 16-07-2015
  * Time: 00:00
  */
-require CONFIG_DIR . DIRECTORY_SEPARATOR . MAIN_FILE;
-
 // Initializing components ...
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
@@ -23,7 +21,7 @@ if(!isset($environmentConfigurationFiles[$environment])) {
 
 // Loading the environment config file (development, production) ...
 $fileName = $environmentConfigurationFiles[$environment];
-$selectedConfigFile = CONFIG_DIR . DIRECTORY_SEPARATOR . $fileName;
+$selectedConfigFile = CONFIG_DIR . SLASH . $fileName;
 $configuration = require($selectedConfigFile);
 
-require ROUTES_DIR . DIRECTORY_SEPARATOR . MAIN_FILE;
+require ROUTES_DIR . SLASH . MAIN_FILE;
