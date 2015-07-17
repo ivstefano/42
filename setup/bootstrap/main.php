@@ -13,7 +13,7 @@ $whoops->register();
 // Loading environment ...
 $envVar = EnvironmentVariables::ENVIRONMENT;
 $environment = getEnvironmentVar($envVar);
-if(!isset($environmentConfigurationFiles[$environment])) {
+if (!isset($environmentConfigurationFiles[$environment])) {
 	throw new Exception(
 		"Oops! Bootstrap: It looks like $envVar = $environment is an improper environment value (Allowed: development, production)."
 	);
@@ -25,3 +25,13 @@ $selectedConfigFile = CONFIG_DIR . SLASH . $fileName;
 $configuration = require($selectedConfigFile);
 
 require ROUTES_DIR . SLASH . MAIN_FILE;
+
+use Examples\ItemMappingExample;
+
+// Try an example
+$example = new ItemMappingExample(
+	new \Store\Infrastructure\Presentation\ItemMap(),
+	new \Core\Infrastructure\Presentation\Mapping\Mapper()
+);
+$example->runBackToFront();
+$example->runFrontToBack();

@@ -5,5 +5,7 @@
  * Date: 16-07-2015
  * Time: 00:00
  */
-echo "Routing...";
-echo "<br> Not really";
+
+namespace setup\routes;
+
+echo 'Routing...';
