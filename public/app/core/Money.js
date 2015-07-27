@@ -39,10 +39,7 @@ Money.prototype = {
     },
 
     validateAmount: function(amount) {
-        if (isNaN(parseFloat(amount))) {
-            throw new InvalidMoneyException("The given amount is not a valid number");
-        }
-
+        this.validateFloat(amount);
         this.validatePositiveAmount(amount);
     },
 
@@ -95,6 +92,11 @@ Money.prototype = {
         return this.getAmount() <= money.getAmount();
     },
 
+    moreThan: function(money) {
+        this.validateMoney(money);
+        return this.getAmount() > money.getAmount();
+    },
+
     moreThanOrEqualTo: function(money) {
         this.validateMoney(money);
         return this.getAmount() >= money.getAmount();
@@ -139,3 +141,5 @@ Money.prototype = {
         ];
     }
 };
+
+var exports = module.exports = Money;
